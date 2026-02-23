@@ -24,20 +24,20 @@ export default function HorizontalBanner({
   // Build a series of decorative gradient blocks to simulate a horizontal panorama
   const blocks = Array.from({ length: 8 });
   const colors = [
-    "#e8ddd1",
+    "#E5DED6",
     "#ddd0c2",
     "#d4c4b0",
     "#cbb89e",
-    "#c2ac8c",
-    "#b9a07a",
-    "#b09468",
-    "#a78856",
+    "#C2C9BE",
+    "#B5BDB0",
+    "#A8B5A2",
+    "#9BAD94",
   ];
 
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
       {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-[#faf9f7]/70 z-10" />
+      <div className="absolute inset-0 bg-[#F4EFE8]/75 z-10" />
       {/* Horizontal strip */}
       <div
         ref={stripRef}

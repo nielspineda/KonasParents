@@ -45,25 +45,25 @@ export default function TimelineCard({
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
     >
-      <div className="flex flex-col items-center text-center max-w-lg mx-auto px-6 py-16">
+      <div className="flex flex-col items-center text-center max-w-lg mx-auto px-6 py-24">
         <span
-          className="text-xs tracking-[0.2em] uppercase text-[#b89a7a] mb-3"
+          className="text-xs tracking-[0.2em] uppercase text-[#A8B5A2] mb-4"
           style={{ fontFamily: "var(--font-sans)" }}
         >
           {entry.date}
         </span>
         <h2
-          className={`mb-4 leading-tight ${
+          className={`mb-5 leading-tight ${
             entry.isFuture
-              ? "text-4xl md:text-5xl text-[#b89a7a]"
-              : "text-3xl md:text-4xl text-[#2c2c2c]"
+              ? "text-4xl md:text-5xl text-[#A8B5A2]"
+              : "text-3xl md:text-4xl text-[#3A342F]"
           }`}
           style={{ fontFamily: "var(--font-serif)" }}
         >
           {entry.title}
         </h2>
         <p
-          className="text-base leading-relaxed text-gray-600 max-w-sm"
+          className="text-base leading-relaxed text-[#6F6760] max-w-sm"
           style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
         >
           {entry.story}

@@ -1,9 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #faf9f7;
-  --foreground: #2c2c2c;
-  --accent: #b89a7a;
+  --background: #F4EFE8;
+  --foreground: #3A342F;
+  --foreground-secondary: #6F6760;
+  --accent: #A8B5A2;
+  --accent-hover: #8F9A86;
+  --card-bg: rgba(246, 243, 238, 0.8);
+  --card-border: #E5DED6;
   --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-sans: "Lato", system-ui, sans-serif;
 }

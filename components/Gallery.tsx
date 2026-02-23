@@ -13,7 +13,7 @@ export default function Gallery({ images }: GalleryProps) {
   if (images.length === 0) {
     return (
       <p
-        className="text-gray-400 text-sm text-center py-12"
+        className="text-[#6F6760] text-sm text-center py-12"
         style={{ fontFamily: "var(--font-sans)" }}
       >
         {/* TODO: Add photos to /public/images/gallery/ and update content */}
@@ -29,7 +29,7 @@ export default function Gallery({ images }: GalleryProps) {
           <button
             key={i}
             onClick={() => setLightboxIndex(i)}
-            className="aspect-square overflow-hidden rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b89a7a]"
+            className="aspect-square overflow-hidden rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A8B5A2]"
             aria-label={`Open photo: ${img.alt}`}
           >
             <img
