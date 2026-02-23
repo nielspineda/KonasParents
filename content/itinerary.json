@@ -1,0 +1,32 @@
+[
+  {
+    "time": "4:00 PM",
+    "event": "Guests Arrive & Be Seated",
+    "description": "Please arrive a few minutes early so we can start on time."
+  },
+  {
+    "time": "4:30 PM",
+    "event": "Ceremony",
+    "description": "The exchange of vows and rings."
+  },
+  {
+    "time": "5:00 PM",
+    "event": "Cocktail Hour",
+    "description": "Drinks, light bites, and mingling on the lawn."
+  },
+  {
+    "time": "6:00 PM",
+    "event": "Dinner & Toasts",
+    "description": "Sit-down dinner followed by heartfelt speeches."
+  },
+  {
+    "time": "8:00 PM",
+    "event": "Dancing",
+    "description": "First dance, then the floor is yours!"
+  },
+  {
+    "time": "10:30 PM",
+    "event": "Send-Off",
+    "description": "Wave the happy couple goodbye as they begin their honeymoon."
+  }
+]

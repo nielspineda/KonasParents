@@ -1,0 +1,45 @@
+[
+  {
+    "id": "1",
+    "date": "Summer 2018",
+    "title": "First Meeting",
+    "story": "Two strangers found themselves at the same rooftop gathering in the city. A shared laugh over a spilled drink became the beginning of something wonderful.",
+    "images": ["/images/timeline/placeholder.jpg"]
+  },
+  {
+    "id": "2",
+    "date": "Autumn 2018",
+    "title": "The First Date",
+    "story": "A walk through the park, then coffee that stretched into dinner. Neither of them wanted the evening to end.",
+    "images": ["/images/timeline/placeholder.jpg"]
+  },
+  {
+    "id": "3",
+    "date": "Winter 2019",
+    "title": "Making it Official",
+    "story": "Snowed in together, watching old movies and talking about everything. That week, they both knew.",
+    "images": ["/images/timeline/placeholder.jpg"]
+  },
+  {
+    "id": "4",
+    "date": "Spring 2020",
+    "title": "Weathering the Storm",
+    "story": "The world paused, but their love grew stronger. They cooked terrible meals, learned card games, and fell even more deeply in love.",
+    "images": ["/images/timeline/placeholder.jpg"]
+  },
+  {
+    "id": "5",
+    "date": "Summer 2022",
+    "title": "The Proposal",
+    "story": "On a quiet evening by the water, with the golden light fading, he got down on one knee. She said yes before he could finish the question.",
+    "images": ["/images/timeline/placeholder.jpg"]
+  },
+  {
+    "id": "6",
+    "date": "Coming Soon",
+    "title": "Married! 🎉",
+    "story": "And now, surrounded by the people they love most, they begin the next great adventure together.",
+    "images": [],
+    "isFuture": true
+  }
+]

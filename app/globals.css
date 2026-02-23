@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+:root {
+  --background: #faf9f7;
+  --foreground: #2c2c2c;
+  --accent: #b89a7a;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Lato", system-ui, sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+html {
+  scroll-behavior: smooth;
+}
