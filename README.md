@@ -1,4 +1,4 @@
-# Niels & Bess — Wedding Website
+# Niels & Bess — Wedding Website - KonasParents
 
 A simple, elegant wedding website built with Next.js (App Router) + Tailwind CSS, hosted on GitHub Pages.
 
