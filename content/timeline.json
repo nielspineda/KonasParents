@@ -1,44 +1,58 @@
 [
   {
     "id": "1",
-    "date": "Summer 2018",
-    "title": "First Meeting",
-    "story": "Two strangers found themselves at the same rooftop gathering in the city. A shared laugh over a spilled drink became the beginning of something wonderful.",
+    "date": "Nov & Dec 2020",
+    "title": "When We Met",
+    "story": "We match on Hinge! After a long talking phase (shoutout to Niels' wisdom teeth removal), we officially go on our first date on 12/12/2020! Marking the official anniversary of when Bess fell in love with Kona (and started dating Niels).",
     "images": ["/images/timeline/placeholder.jpg"]
   },
   {
     "id": "2",
-    "date": "Autumn 2018",
-    "title": "The First Date",
-    "story": "A walk through the park, then coffee that stretched into dinner. Neither of them wanted the evening to end.",
+    "date": "May 2021",
+    "title": "When We Adventured",
+    "story": "Our first vacation as a couple to the beautiful island of Maui! This adventure kicks off our love for exploring the world together!",
     "images": ["/images/timeline/placeholder.jpg"]
   },
   {
     "id": "3",
-    "date": "Winter 2019",
-    "title": "Making it Official",
-    "story": "Snowed in together, watching old movies and talking about everything. That week, they both knew.",
+    "date": "Jan 2022",
+    "title": "When We Moved In Together",
+    "story": "We move in together! Bess was living in Mountain View, Niels in Fort Mason; we decide to meet in the middle in beautiful San Mateo. This begins the exploration of the town that we'd call home for a long time.",
     "images": ["/images/timeline/placeholder.jpg"]
   },
   {
     "id": "4",
-    "date": "Spring 2020",
-    "title": "Weathering the Storm",
-    "story": "The world paused, but their love grew stronger. They cooked terrible meals, learned card games, and fell even more deeply in love.",
-    "images": ["/images/timeline/placeholder.jpg"]
-  },
-  {
-    "id": "5",
-    "date": "Summer 2022",
-    "title": "The Proposal",
-    "story": "On a quiet evening by the water, with the golden light fading, he got down on one knee. She said yes before he could finish the question.",
+    "date": "2022 & 2023",
+    "title": "When We Traveled... A LOT",
+    "story": "These two years bring nonstop adventuring with each other and our loved ones. Our love of travel goes international (Aruba, England), Bess introduces Niels to the wonderful world of Disney (and the commitment needed to maximize lightning lanes), and our families join in on the fun (Galapagos, Mexico, Hawaii, and Noelle's Wedding)!",
     "images": ["/images/timeline/placeholder.jpg"]
   },
   {
     "id": "6",
-    "date": "Coming Soon",
-    "title": "Married! 🎉",
-    "story": "And now, surrounded by the people they love most, they begin the next great adventure together.",
+    "date": "May 2024",
+    "title": "When We Bought a House",
+    "story": "After falling in love with San Mateo and feeling so grateful for our community in the Bay Area (especially our adorable nephews and niece), we buy a house!",
+    "images": ["/images/timeline/placeholder.jpg"]
+  },
+  {
+    "id": "7",
+    "date": "Oct 2024",
+    "title": "When He Bought A Ring",
+    "story": "A ring is purchased, blessings are given (thank you Ceci and Matt!), and Niels begins to plan for a big moment.",
+    "images": ["/images/timeline/placeholder.jpg"]
+  },
+  {
+    "id": "8",
+    "date": "Jan 2025",
+    "title": "When She Said \"Yes!\"",
+    "story": "The big moment comes! We get engaged at the spot of our first date in Fort Mason alongside good friends, a good dog, and lots of champagne!",
+    "images": ["/images/timeline/placeholder.jpg"]
+  },
+  {
+    "id": "9",
+    "date": "August 2026",
+    "title": "When We Say \"I Do\"",
+    "story": "We get married! And we can't wait to celebrate this next adventure with you all. Here are the details!",
     "images": [],
     "isFuture": true
   }
