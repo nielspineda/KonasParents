@@ -34,12 +34,22 @@ export default function GalleryPage() {
     }
   }, [router]);
 
+  // Shuffle images once on mount for random order each visit
+  const shuffled = useMemo(() => {
+    const arr = (galleryData as GalleryImage[]).filter((img) => img.src);
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   // Preload first batch of images before revealing gallery
   useEffect(() => {
     if (!authorized) return;
-    const validImages = (galleryData as GalleryImage[]).filter((img) => img.src);
     // Preload first 12 images (visible above fold), then reveal
-    const preloadCount = Math.min(12, validImages.length);
+    const preloadCount = Math.min(12, shuffled.length);
     if (preloadCount === 0) { setLoading(false); return; }
 
     let loaded = 0;
@@ -52,7 +62,7 @@ export default function GalleryPage() {
       }
     };
 
-    validImages.slice(0, preloadCount).forEach((img) => {
+    shuffled.slice(0, preloadCount).forEach((img) => {
       const image = new Image();
       image.onload = onLoad;
       image.onerror = onLoad;
@@ -62,7 +72,7 @@ export default function GalleryPage() {
     // Safety timeout — don't block forever
     const timeout = setTimeout(() => setLoading(false), 6000);
     return () => clearTimeout(timeout);
-  }, [authorized]);
+  }, [authorized, shuffled]);
 
   const handleTagClick = useCallback(
     (tag: Tag) => {
@@ -85,14 +95,12 @@ export default function GalleryPage() {
     [hasInteracted]
   );
 
-  const images: GalleryImage[] = galleryData as GalleryImage[];
-
   const filtered = useMemo(
     () =>
-      images.filter(
-        (img) => img.src && img.tags.some((t) => activeTags.has(t as Tag))
+      shuffled.filter(
+        (img) => img.tags.some((t) => activeTags.has(t as Tag))
       ),
-    [images, activeTags]
+    [shuffled, activeTags]
   );
 
   if (!authorized) return null;
