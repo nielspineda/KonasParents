@@ -39,7 +39,7 @@ export default function TimelineCard({ entry }: TimelineCardProps) {
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
     >
-      <div className="flex flex-col items-center text-center max-w-lg mx-auto px-6 py-24">
+      <div className="flex flex-col items-center text-center max-w-xl mx-auto px-6 py-24">
         {entry.icon && (
           <img
             src={entry.icon}
