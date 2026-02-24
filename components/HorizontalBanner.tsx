@@ -20,15 +20,17 @@ export default function HorizontalBanner({
 }: HorizontalBannerProps) {
   const stripRef = useRef<HTMLDivElement>(null);
 
+  // Each image gets 50vw width so landscape photos aren't overly cropped
+  const stripWidth = Math.max(180, images.length * 50);
+
   useEffect(() => {
     if (!stripRef.current) return;
     const progress = total > 1 ? activeIndex / (total - 1) : 0;
-    const offset = -progress * 60;
+    // Scroll from 0% to -(stripWidth - 100)% so the full strip is traversed
+    const maxOffset = stripWidth - 100;
+    const offset = -progress * maxOffset;
     stripRef.current.style.transform = `translateX(${offset}%)`;
-  }, [activeIndex, total]);
-
-  // Width scales with image count: each image gets ~25vw, with a minimum of 180%
-  const stripWidth = Math.max(180, images.length * 25);
+  }, [activeIndex, total, stripWidth]);
 
   // Gradient fallback colors for images without a src
   const fallbackColors = [
