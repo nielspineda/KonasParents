@@ -40,8 +40,8 @@ export default function TimelineCard({ entry }: TimelineCardProps) {
     >
       <div className="flex flex-col items-center text-center max-w-lg mx-auto px-6 py-24">
         <span
-          className="frost px-5 py-1.5 text-base md:text-lg tracking-[0.2em] uppercase text-[#A8B5A2] mb-4"
-          style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
+          className="text-base md:text-lg tracking-[0.2em] uppercase text-[#3A342F] mb-4"
+          style={{ fontFamily: "var(--font-sans)", fontWeight: 400, textShadow: "0 1px 8px rgba(244, 239, 232, 0.8)" }}
         >
           {entry.date}
         </span>
