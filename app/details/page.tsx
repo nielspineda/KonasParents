@@ -118,7 +118,7 @@ export default function DetailsPage() {
       </section>
 
       {/* Itinerary */}
-      <section className="max-w-5xl mx-auto px-6 py-20">
+      <section className="max-w-6xl mx-auto px-4 py-20">
         <h2
           className="text-4xl text-center mb-3 text-[#3A342F]"
           style={{ fontFamily: "var(--font-script)" }}
@@ -126,14 +126,15 @@ export default function DetailsPage() {
           The Weekend
         </h2>
         <p className="divider-leaf mb-12" style={{ fontFamily: "var(--font-sans)" }}>✦</p>
-        <div className="flex flex-col md:flex-row gap-10 items-start max-w-4xl mx-auto">
+        <div className="flex flex-col md:flex-row gap-8 items-start">
           {/* Photo */}
           <div className="w-full md:w-1/2 flex-shrink-0">
             <div className="polaroid">
-              {/* TODO: Replace with actual photo URL */}
-              <div className="aspect-[3/4] bg-gradient-to-br from-[#e8ddd1] to-[#C2C9BE] flex items-center justify-center text-[#6F6760] text-sm" style={{ fontFamily: "var(--font-sans)" }}>
-                Photo coming soon
-              </div>
+              <img
+                src="https://res.cloudinary.com/dgv13hqfw/image/upload/v1771913440/B0F579D3-9816-454A-AF2E-44C833EE05F3_1_105_c_eseppx.jpg"
+                alt="Bess and Niels"
+                className="w-full aspect-[3/4] object-cover"
+              />
             </div>
           </div>
           {/* Itinerary */}
