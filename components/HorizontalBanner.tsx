@@ -31,11 +31,11 @@ export default function HorizontalBanner({ images }: HorizontalBannerProps) {
     if (!strip) return;
 
     const onScroll = () => {
-      const scrollTop = window.scrollY;
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      // Don't start scrolling until past the intro section (first viewport)
+      const scrollTop = Math.max(0, window.scrollY - window.innerHeight);
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight * 2;
       if (maxScroll <= 0) return;
       const progress = Math.min(scrollTop / maxScroll, 1);
-      // Translate as percentage of strip's own width, capped so right edge aligns with viewport
       const stripW = strip.scrollWidth;
       const viewW = window.innerWidth;
       const maxTranslate = Math.max(0, stripW - viewW);
