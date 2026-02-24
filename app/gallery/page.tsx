@@ -133,13 +133,13 @@ export default function GalleryPage() {
 
       {/* Back link */}
       <div className="fixed bottom-6 left-6 z-40">
-        <button
-          onClick={() => router.push(`${BASE_PATH}/details`)}
-          className="bg-white/80 backdrop-blur-sm text-[#6F6760] hover:text-[#3A342F] rounded-full px-5 py-2 text-sm shadow-md transition-colors"
+        <a
+          href={`${BASE_PATH}/details`}
+          className="bg-white/80 backdrop-blur-sm text-[#6F6760] hover:text-[#3A342F] rounded-full px-5 py-2 text-sm shadow-md transition-colors inline-block"
           style={{ fontFamily: "var(--font-sans)" }}
         >
           ← Details
-        </button>
+        </a>
       </div>
 
       {/* Lightbox */}
