@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Tabs from "@/components/Tabs";
 import itineraryData from "@/content/itinerary.json";
 import faqsData from "@/content/faqs.json";
 
@@ -11,6 +10,7 @@ const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 export default function DetailsPage() {
   const router = useRouter();
   const [authorized, setAuthorized] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useEffect(() => {
     const access = localStorage.getItem("kp_access");
@@ -25,80 +25,29 @@ export default function DetailsPage() {
     return null;
   }
 
-  const tabs = [
-    {
-      label: "FAQs",
-      content: (
-        <div className="max-w-2xl mx-auto space-y-8">
-          {faqsData.map((faq, i) => (
-            <div key={i} className="border-b border-[#E5DED6] pb-8 last:border-b-0">
-              <h3
-                className="text-xl mb-2 text-[#3A342F]"
-                style={{ fontFamily: "'Nothing You Could Do', cursive" }}
-              >
-                {faq.question}
-              </h3>
-              <p
-                className="text-sm leading-relaxed text-[#6F6760] whitespace-pre-line"
-                style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
-              >
-                {faq.answer}
-              </p>
-            </div>
-          ))}
-        </div>
-      ),
-    },
-    {
-      label: "RSVP",
-      content: (
-        <div className="text-center py-10 max-w-lg mx-auto">
-          <h3
-            className="text-2xl text-[#3A342F] mb-6"
-            style={{ fontFamily: "'Nothing You Could Do', cursive" }}
-          >
-            RSVP
-          </h3>
-          <p
-            className="text-base leading-relaxed text-[#6F6760]"
-            style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
-          >
-            Given how tight-knit this wedding will be, no need for an RSVP! However, if you do have any concerns (i.e. dietary restrictions, timing, etc.) or last minute changes, please let us know directly!
-          </p>
-        </div>
-      ),
-    },
-  ];
-
   return (
     <div className="min-h-screen bg-[#F4EFE8]">
-      {/* Hero */}
-      <section className="relative flex items-center justify-center h-[60vh] bg-gradient-to-br from-[#e8ddd1] to-[#C2C9BE] overflow-hidden">
-        {/* TODO: Replace the gradient with an actual hero image:
-            <img src={`${BASE_PATH}/images/hero.jpg`} alt="Bess and Niels" className="absolute inset-0 w-full h-full object-cover" />
-        */}
-        {/* Warm overlay to unify tones */}
-        <div className="absolute inset-0 bg-[#3A342F]/10 z-[1]" />
-        <div className="relative z-10 text-center px-6">
-          <p
-            className="text-xl md:text-2xl text-white/90 mb-3"
-            style={{ fontFamily: "'Nothing You Could Do', cursive" }}
-          >
-            Let&apos;s Celebrate!
-          </p>
-          <h1
-            className="text-6xl md:text-8xl text-white leading-tight"
-            style={{ fontFamily: "var(--font-script)" }}
-          >
-            Bess &amp; Niels
-          </h1>
-          <p
-            className="mt-4 text-white/90 text-lg md:text-xl tracking-wide"
-            style={{ fontFamily: "'Nothing You Could Do', cursive" }}
-          >
-            08.08.26 | Napa, CA
-          </p>
-        </div>
+      {/* Hero — compact text header */}
+      <section className="pt-16 pb-10 text-center px-6">
+        <p
+          className="text-lg md:text-xl text-[#A8B5A2] mb-2"
+          style={{ fontFamily: "'Nothing You Could Do', cursive" }}
+        >
+          Let&apos;s Celebrate!
+        </p>
+        <h1
+          className="text-5xl md:text-7xl text-[#3A342F] leading-tight"
+          style={{ fontFamily: "var(--font-script)" }}
+        >
+          Bess &amp; Niels
+        </h1>
+        <p
+          className="mt-3 text-[#6F6760] text-base md:text-lg tracking-wide"
+          style={{ fontFamily: "'Nothing You Could Do', cursive" }}
+        >
+          08.08.26 | Napa, CA
+        </p>
+        <p className="divider-leaf mt-6 mb-0" style={{ fontFamily: "var(--font-sans)" }}>✦</p>
       </section>
 
       {/* Itinerary */}
@@ -176,9 +125,67 @@ export default function DetailsPage() {
         </div>
       </section>
 
-      {/* Tabs */}
-      <section className="max-w-3xl mx-auto px-6 pb-16">
-        <Tabs tabs={tabs} />
+      {/* FAQs — accordion */}
+      <section className="max-w-3xl mx-auto px-6 py-16">
+        <h2
+          className="text-3xl text-center mb-3 text-[#3A342F]"
+          style={{ fontFamily: "'Nothing You Could Do', cursive" }}
+        >
+          FAQs
+        </h2>
+        <p className="divider-leaf mb-10" style={{ fontFamily: "var(--font-sans)" }}>✦</p>
+        <div className="space-y-0">
+          {faqsData.map((faq, i) => {
+            const isOpen = openFaq === i;
+            return (
+              <div key={i} className="border-b border-[#E5DED6]">
+                <button
+                  onClick={() => setOpenFaq(isOpen ? null : i)}
+                  className="w-full flex items-center justify-between py-5 text-left group"
+                >
+                  <span
+                    className="text-lg text-[#3A342F] group-hover:text-[#A8B5A2] transition-colors"
+                    style={{ fontFamily: "'Nothing You Could Do', cursive" }}
+                  >
+                    {faq.question}
+                  </span>
+                  <span
+                    className={`text-[#A8B5A2] text-xl ml-4 shrink-0 transition-transform duration-200 ${isOpen ? "rotate-45" : ""}`}
+                  >
+                    +
+                  </span>
+                </button>
+                <div
+                  className={`overflow-hidden transition-all duration-300 ${isOpen ? "max-h-60 pb-5" : "max-h-0"}`}
+                >
+                  <p
+                    className="text-sm leading-relaxed text-[#6F6760] whitespace-pre-line"
+                    style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
+                  >
+                    {faq.answer}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* RSVP */}
+      <section className="max-w-lg mx-auto px-6 pb-16 text-center">
+        <h2
+          className="text-3xl text-[#3A342F] mb-3"
+          style={{ fontFamily: "'Nothing You Could Do', cursive" }}
+        >
+          RSVP
+        </h2>
+        <p className="divider-leaf mb-8" style={{ fontFamily: "var(--font-sans)" }}>✦</p>
+        <p
+          className="text-base leading-relaxed text-[#6F6760]"
+          style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
+        >
+          Given how tight-knit this wedding will be, no need for an RSVP! However, if you do have any concerns (i.e. dietary restrictions, timing, etc.) or last minute changes, please let us know directly!
+        </p>
       </section>
 
       {/* Gallery link */}
