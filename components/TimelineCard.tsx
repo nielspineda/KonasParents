@@ -29,7 +29,7 @@ export default function TimelineCard({ entry }: TimelineCardProps) {
           setVisible(true);
         }
       },
-      { threshold: 0.4 }
+      { threshold: 0.2 }
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
@@ -40,21 +40,27 @@ export default function TimelineCard({ entry }: TimelineCardProps) {
     if (hasStarted.current) return;
     hasStarted.current = true;
 
-    const len = entry.story.length;
+    const text = entry.story;
+    const len = text.length;
     let i = 0;
-    const speed = Math.max(18, Math.min(35, 2000 / len));
+    const charSpeed = 45;
 
     const tick = () => {
       i++;
       setTypedCount(i);
       if (i < len) {
-        setTimeout(tick, speed);
+        // Pause after sentence-ending punctuation
+        const ch = text[i - 1];
+        const delay = (ch === '!' || ch === '.' || ch === '?') && i < len - 1
+          ? 500
+          : charSpeed;
+        setTimeout(tick, delay);
       } else {
         setDoneTyping(true);
       }
     };
-    // Small delay after card fades in
-    setTimeout(tick, 400);
+    // Hold on cursor for a moment before typing starts
+    setTimeout(tick, 1000);
   }, [entry.story]);
 
   useEffect(() => {
