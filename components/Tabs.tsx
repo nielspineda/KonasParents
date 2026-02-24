@@ -17,15 +17,15 @@ export default function Tabs({ tabs }: TabsProps) {
   return (
     <div>
       {/* Tab bar */}
-      <div className="flex border-b border-[#E5DED6] mb-10">
+      <div className="flex justify-center gap-2 mb-10">
         {tabs.map((tab, i) => (
           <button
             key={tab.label}
             onClick={() => setActive(i)}
-            className={`px-6 py-3 text-sm tracking-wide transition-colors ${
+            className={`px-5 py-2 text-sm tracking-wide rounded-full transition-colors ${
               active === i
-                ? "border-b-2 border-[#A8B5A2] text-[#A8B5A2] font-medium"
-                : "text-[#6F6760] hover:text-[#3A342F]"
+                ? "bg-[#A8B5A2]/15 text-[#A8B5A2] font-medium"
+                : "text-[#6F6760] hover:text-[#3A342F] hover:bg-[#E5DED6]/40"
             }`}
             style={{ fontFamily: "var(--font-sans)" }}
           >

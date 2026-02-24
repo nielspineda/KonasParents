@@ -55,8 +55,8 @@ export default function PasswordModal({ onClose }: PasswordModalProps) {
     >
       <div className="bg-[#F6F3EE] rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] border border-[#E5DED6] p-8 w-full max-w-sm mx-4">
         <h2
-          className="text-2xl mb-1 text-center text-[#3A342F]"
-          style={{ fontFamily: "var(--font-serif)" }}
+          className="text-3xl mb-1 text-center text-[#3A342F]"
+          style={{ fontFamily: "var(--font-script)", fontWeight: 600 }}
         >
           Details &amp; Itinerary
         </h2>

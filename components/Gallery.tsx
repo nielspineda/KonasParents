@@ -24,18 +24,19 @@ export default function Gallery({ images }: GalleryProps) {
 
   return (
     <>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
         {images.map((img, i) => (
           <button
             key={i}
             onClick={() => setLightboxIndex(i)}
-            className="aspect-square overflow-hidden rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A8B5A2]"
+            className="polaroid focus:outline-none focus:ring-2 focus:ring-[#A8B5A2] transition-transform duration-300 hover:-rotate-1 hover:scale-[1.02]"
+            style={{ transform: `rotate(${i % 2 === 0 ? -1 : 1}deg)` }}
             aria-label={`Open photo: ${img.alt}`}
           >
             <img
               src={img.src}
               alt={img.alt}
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              className="w-full aspect-square object-cover"
             />
           </button>
         ))}

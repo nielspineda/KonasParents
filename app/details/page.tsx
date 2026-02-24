@@ -64,8 +64,8 @@ export default function DetailsPage() {
           {faqsData.map((faq, i) => (
             <div key={i} className="border-b border-[#E5DED6] pb-8">
               <h3
-                className="text-lg mb-2 text-[#3A342F]"
-                style={{ fontFamily: "var(--font-serif)" }}
+                className="text-xl mb-2 text-[#3A342F]"
+                style={{ fontFamily: "var(--font-script)", fontWeight: 600 }}
               >
                 {faq.question}
               </h3>
@@ -103,8 +103,8 @@ export default function DetailsPage() {
             We&apos;re getting married
           </p>
           <h1
-            className="text-5xl md:text-7xl text-white leading-tight"
-            style={{ fontFamily: "var(--font-serif)", fontWeight: 300 }}
+            className="text-6xl md:text-8xl text-white leading-tight"
+            style={{ fontFamily: "var(--font-script)", fontWeight: 700 }}
           >
             Niels &amp; Bess
           </h1>
@@ -122,37 +122,40 @@ export default function DetailsPage() {
       {/* Itinerary */}
       <section className="max-w-2xl mx-auto px-6 py-20">
         <h2
-          className="text-3xl text-center mb-12 text-[#3A342F]"
-          style={{ fontFamily: "var(--font-serif)" }}
+          className="text-4xl text-center mb-3 text-[#3A342F]"
+          style={{ fontFamily: "var(--font-script)", fontWeight: 600 }}
         >
           The Day
         </h2>
-        <ol className="space-y-8">
-          {itineraryData.map((item, i) => (
-            <li key={i} className="flex gap-6">
-              <span
-                className="w-20 shrink-0 text-xs pt-1 tracking-wide text-[#A8B5A2] font-medium text-right"
-                style={{ fontFamily: "var(--font-sans)" }}
-              >
-                {item.time}
-              </span>
-              <div className="border-l border-[#E5DED6] pl-6">
-                <p
-                  className="text-base text-[#3A342F] mb-0.5"
-                  style={{ fontFamily: "var(--font-serif)" }}
+        <p className="divider-leaf mb-12" style={{ fontFamily: "var(--font-sans)" }}>✦</p>
+        <div className="paper-card px-8 py-10 max-w-xl mx-auto">
+          <ol className="space-y-6">
+            {itineraryData.map((item, i) => (
+              <li key={i} className="flex gap-6">
+                <span
+                  className="w-20 shrink-0 text-xs pt-1 tracking-wide text-[#A8B5A2] font-medium text-right"
+                  style={{ fontFamily: "var(--font-sans)" }}
                 >
-                  {item.event}
-                </p>
-                <p
-                  className="text-sm text-[#6F6760]"
-                  style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
-                >
-                  {item.description}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ol>
+                  {item.time}
+                </span>
+                <div className="border-l border-[#E5DED6] pl-6">
+                  <p
+                    className="text-lg text-[#3A342F] mb-0.5"
+                    style={{ fontFamily: "var(--font-script)", fontWeight: 500 }}
+                  >
+                    {item.event}
+                  </p>
+                  <p
+                    className="text-sm text-[#6F6760]"
+                    style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
+                  >
+                    {item.description}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
       </section>
 
       {/* Tabs */}

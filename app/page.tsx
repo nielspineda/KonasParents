@@ -25,8 +25,8 @@ export default function LandingPage() {
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-20 flex items-center justify-between px-6 py-4">
         <p
-          className="text-xs tracking-[0.25em] uppercase text-[#6F6760]"
-          style={{ fontFamily: "var(--font-sans)" }}
+          className="text-sm tracking-[0.05em] text-[#6F6760]"
+          style={{ fontFamily: "var(--font-script)", fontWeight: 600 }}
         >
           Niels &amp; Bess
         </p>
@@ -43,15 +43,12 @@ export default function LandingPage() {
       <main>
         {/* Intro spacer */}
         <section className="flex flex-col items-center justify-center min-h-screen text-center px-6">
-          <p
-            className="text-xs tracking-[0.3em] uppercase text-[#A8B5A2] mb-4"
-            style={{ fontFamily: "var(--font-sans)" }}
-          >
-            A love story
+          <p className="divider-leaf mb-6" style={{ fontFamily: "var(--font-sans)" }}>
+            a love story
           </p>
           <h1
-            className="text-5xl md:text-7xl leading-tight text-[#3A342F] mb-6"
-            style={{ fontFamily: "var(--font-serif)", fontWeight: 300 }}
+            className="text-6xl md:text-8xl leading-tight text-[#3A342F] mb-4"
+            style={{ fontFamily: "var(--font-script)", fontWeight: 700 }}
           >
             Niels &amp; Bess
           </h1>
@@ -76,8 +73,8 @@ export default function LandingPage() {
         {/* Bottom CTA */}
         <section className="flex flex-col items-center justify-center min-h-[50vh] text-center px-6 pb-32">
           <p
-            className="text-sm text-[#6F6760] mb-8"
-            style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
+            className="text-lg text-[#6F6760] mb-8"
+            style={{ fontFamily: "var(--font-script)", fontWeight: 500 }}
           >
             Want to see the wedding details?
           </p>

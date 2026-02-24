@@ -55,19 +55,21 @@ export default function TimelineCard({
         <h2
           className={`mb-5 leading-tight ${
             entry.isFuture
-              ? "text-4xl md:text-5xl text-[#A8B5A2]"
-              : "text-3xl md:text-4xl text-[#3A342F]"
+              ? "text-5xl md:text-6xl text-[#A8B5A2]"
+              : "text-4xl md:text-5xl text-[#3A342F]"
           }`}
-          style={{ fontFamily: "var(--font-serif)" }}
+          style={{ fontFamily: "var(--font-script)", fontWeight: 600 }}
         >
           {entry.title}
         </h2>
-        <p
-          className="text-base leading-relaxed text-[#6F6760] max-w-sm"
-          style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
-        >
-          {entry.story}
-        </p>
+        <div className="paper-card px-6 py-5 max-w-sm">
+          <p
+            className="text-base leading-relaxed text-[#6F6760]"
+            style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
+          >
+            {entry.story}
+          </p>
+        </div>
       </div>
     </div>
   );
