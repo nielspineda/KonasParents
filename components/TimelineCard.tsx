@@ -39,24 +39,22 @@ export default function TimelineCard({ entry }: TimelineCardProps) {
       }`}
     >
       <div className="flex flex-col items-center text-center max-w-lg mx-auto px-6 py-24">
-        <div className="frost px-8 py-6 mb-5">
-          <span
-            className="text-base md:text-lg tracking-[0.2em] uppercase text-[#A8B5A2] block mb-3"
-            style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
-          >
-            {entry.date}
-          </span>
-          <h2
-            className={`leading-tight whitespace-pre-line ${
-              entry.isFuture
-                ? "text-5xl md:text-6xl text-[#A8B5A2]"
-                : "text-4xl md:text-5xl text-[#3A342F]"
-            }`}
-            style={{ fontFamily: "var(--font-script)" }}
-          >
-            {entry.title}
-          </h2>
-        </div>
+        <span
+          className="frost px-5 py-1.5 text-base md:text-lg tracking-[0.2em] uppercase text-[#A8B5A2] mb-4"
+          style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
+        >
+          {entry.date}
+        </span>
+        <h2
+          className={`mb-5 leading-tight whitespace-pre-line ${
+            entry.isFuture
+              ? "text-5xl md:text-6xl text-[#A8B5A2]"
+              : "text-4xl md:text-5xl text-[#3A342F]"
+          }`}
+          style={{ fontFamily: "var(--font-script)" }}
+        >
+          {entry.title}
+        </h2>
         <div className="paper-card px-6 py-5 max-w-sm">
           <p
             className="text-sm leading-relaxed text-[#6F6760]"

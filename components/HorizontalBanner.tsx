@@ -31,9 +31,10 @@ export default function HorizontalBanner({ images }: HorizontalBannerProps) {
     if (!strip) return;
 
     const onScroll = () => {
-      // Don't start scrolling until past the intro section (first viewport)
-      const scrollTop = Math.max(0, window.scrollY - window.innerHeight);
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight * 2;
+      // Start scrolling halfway between intro and first timeline card
+      const scrollStart = window.innerHeight * 0.5;
+      const scrollTop = Math.max(0, window.scrollY - scrollStart);
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight - scrollStart;
       if (maxScroll <= 0) return;
       const progress = Math.min(scrollTop / maxScroll, 1);
       const stripW = strip.scrollWidth;
