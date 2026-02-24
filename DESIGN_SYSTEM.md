@@ -42,19 +42,19 @@ Used in the horizontal banner gradient, transitioning from warm neutrals into sa
 | -------------- | --------------------------------------- | --------------------------------- |
 | `--font-serif` | `"Cormorant Garamond", Georgia, serif`  | Mid-level headings, dates          |
 | `--font-sans`  | `"Lato", system-ui, sans-serif`         | Body text, UI labels, navigation   |
-| `--font-script`| `"Great Vibes", cursive`                | Display headings, decorative text  |
+| `--font-script`| `"Kalam", cursive`                      | Display headings, decorative text  |
 
 **Weights loaded:**
 
 - Cormorant Garamond: 300 (light), 400 (regular), 600 (semi-bold), plus italic variants
 - Lato: 300 (light), 400 (regular), 700 (bold)
-- Great Vibes: 400 (regular)
+- Kalam: 300 (light), 400 (regular), 700 (bold)
 
 ### Typographic Style
 
 The style guide establishes two distinct text voices that work together:
 
-1. **Handwritten / Script** — For decorative headers ("wedding weekend", "itinerary", "Save the date!!"). In the codebase this maps to `--font-script` (Great Vibes) at large sizes. The elegant calligraphic style creates warmth and romance without feeling casual.
+1. **Handwritten / Script** — For decorative headers ("wedding weekend", "itinerary", "Save the date!!"). In the codebase this maps to `--font-script` (Kalam) at large sizes. The natural handwriting style creates warmth and intimacy.
 
 2. **Structured / Clean** — For body text, labels, and UI elements. In the codebase this maps to `--font-sans` (Lato) with generous letter-spacing for a clean, readable feel.
 
@@ -193,6 +193,6 @@ The horizontal gradient banner transitions from warm neutrals to sage greens, cr
   --card-border: #E5DED6;
   --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-sans: "Lato", system-ui, sans-serif;
-  --font-script: "Great Vibes", cursive;
+  --font-script: "Kalam", cursive;
 }
 ```

@@ -22,7 +22,7 @@ If referencing colors in Tailwind classes, use the exact hex values above (e.g.,
 
 Apply fonts via inline `style={{ fontFamily: "var(--font-...)" }}`:
 
-1. **`--font-script`** (Great Vibes) — Use for display headings, hero titles, section names, and any text meant to feel personal or decorative. Use at large sizes (text-3xl and up). Great Vibes has a single weight so do not set fontWeight.
+1. **`--font-script`** (Kalam) — Use for display headings, hero titles, section names, and any text meant to feel personal or decorative. Use at large sizes (text-3xl and up) with weight 300–700.
 2. **`--font-sans`** (Lato) — Use for body text, UI labels, buttons, navigation, dates, and small uppercase-tracked labels. Use weight 300 for body, 400–700 for UI.
 3. **`--font-serif`** (Cormorant Garamond) — Use for mid-level headings, elegant date displays, or italic body text in timeline cards where a softer, more personal tone is needed.
 
