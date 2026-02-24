@@ -91,70 +91,82 @@ export default function DetailsPage() {
       {/* Hero */}
       <section className="relative flex items-center justify-center h-[60vh] bg-gradient-to-br from-[#e8ddd1] to-[#C2C9BE] overflow-hidden">
         {/* TODO: Replace the gradient with an actual hero image:
-            <img src={`${BASE_PATH}/images/hero.jpg`} alt="Niels and Bess" className="absolute inset-0 w-full h-full object-cover" />
+            <img src={`${BASE_PATH}/images/hero.jpg`} alt="Bess and Niels" className="absolute inset-0 w-full h-full object-cover" />
         */}
         {/* Warm overlay to unify tones */}
         <div className="absolute inset-0 bg-[#3A342F]/10 z-[1]" />
         <div className="relative z-10 text-center px-6">
           <p
-            className="text-xs tracking-[0.3em] uppercase text-white/70 mb-3"
-            style={{ fontFamily: "var(--font-sans)" }}
+            className="text-xl md:text-2xl text-white/90 mb-3"
+            style={{ fontFamily: "'Nothing You Could Do', cursive" }}
           >
-            We&apos;re getting married
+            Let&apos;s Celebrate!
           </p>
           <h1
             className="text-6xl md:text-8xl text-white leading-tight"
-            style={{ fontFamily: "var(--font-script)", fontWeight: 700 }}
+            style={{ fontFamily: "var(--font-script)" }}
           >
-            Niels &amp; Bess
+            Bess &amp; Niels
           </h1>
-          {/* TODO: Add actual wedding date */}
           <p
-            className="mt-4 text-white/80 text-sm tracking-wide"
-            style={{ fontFamily: "var(--font-sans)" }}
+            className="mt-4 text-white/90 text-lg md:text-xl tracking-wide"
+            style={{ fontFamily: "'Nothing You Could Do', cursive" }}
           >
-            {/* TODO: Wedding date, e.g. "October 12, 2025 · San Francisco, CA" */}
-            Date &amp; Location TBD
+            08.08.26 | Napa, CA
           </p>
         </div>
       </section>
 
       {/* Itinerary */}
-      <section className="max-w-2xl mx-auto px-6 py-20">
+      <section className="max-w-5xl mx-auto px-6 py-20">
         <h2
           className="text-4xl text-center mb-3 text-[#3A342F]"
-          style={{ fontFamily: "var(--font-script)", fontWeight: 600 }}
+          style={{ fontFamily: "var(--font-script)" }}
         >
-          The Day
+          The Weekend
         </h2>
         <p className="divider-leaf mb-12" style={{ fontFamily: "var(--font-sans)" }}>✦</p>
-        <div className="paper-card px-8 py-10 max-w-xl mx-auto">
-          <ol className="space-y-6">
-            {itineraryData.map((item, i) => (
-              <li key={i} className="flex gap-6">
-                <span
-                  className="w-20 shrink-0 text-xs pt-1 tracking-wide text-[#A8B5A2] font-medium text-right"
-                  style={{ fontFamily: "var(--font-sans)" }}
-                >
-                  {item.time}
-                </span>
-                <div className="border-l border-[#E5DED6] pl-6">
-                  <p
-                    className="text-lg text-[#3A342F] mb-0.5"
-                    style={{ fontFamily: "var(--font-script)", fontWeight: 500 }}
-                  >
-                    {item.event}
-                  </p>
-                  <p
-                    className="text-sm text-[#6F6760]"
-                    style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
-                  >
-                    {item.description}
-                  </p>
-                </div>
-              </li>
-            ))}
-          </ol>
+        <div className="flex flex-col md:flex-row gap-10 items-start max-w-4xl mx-auto">
+          {/* Photo */}
+          <div className="w-full md:w-1/2 flex-shrink-0">
+            <div className="polaroid">
+              {/* TODO: Replace with actual photo URL */}
+              <div className="aspect-[3/4] bg-gradient-to-br from-[#e8ddd1] to-[#C2C9BE] flex items-center justify-center text-[#6F6760] text-sm" style={{ fontFamily: "var(--font-sans)" }}>
+                Photo coming soon
+              </div>
+            </div>
+          </div>
+          {/* Itinerary */}
+          <div className="w-full md:w-1/2">
+            <div className="paper-card px-8 py-10">
+              <ol className="space-y-6">
+                {itineraryData.map((item, i) => (
+                  <li key={i} className="flex gap-6">
+                    <span
+                      className="w-20 shrink-0 text-xs pt-1 tracking-wide text-[#A8B5A2] font-medium text-right"
+                      style={{ fontFamily: "var(--font-sans)" }}
+                    >
+                      {item.time}
+                    </span>
+                    <div className="border-l border-[#E5DED6] pl-6">
+                      <p
+                        className="text-lg text-[#3A342F] mb-0.5"
+                        style={{ fontFamily: "var(--font-script)" }}
+                      >
+                        {item.event}
+                      </p>
+                      <p
+                        className="text-sm text-[#6F6760]"
+                        style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
+                      >
+                        {item.description}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
         </div>
       </section>
 

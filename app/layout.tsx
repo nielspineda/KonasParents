@@ -18,9 +18,9 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-        {/* Cormorant Garamond (serif) + Lato (sans) + La Belle Aurore (script) + Caveat (handwriting) loaded at runtime */}
+        {/* Cormorant Garamond (serif) + Lato (sans) + La Belle Aurore (script) + Caveat (handwriting) + Nothing You Could Do loaded at runtime */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=La+Belle+Aurore&family=Lato:wght@300;400;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=La+Belle+Aurore&family=Lato:wght@300;400;700&family=Nothing+You+Could+Do&display=swap"
           rel="stylesheet"
         />
       </head>
