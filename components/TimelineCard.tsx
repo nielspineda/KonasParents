@@ -29,7 +29,8 @@ export default function TimelineCard({ entry }: TimelineCardProps) {
           setVisible(true);
         }
       },
-      { threshold: 0.2 }
+      // Trigger when element crosses the middle of the viewport
+      { rootMargin: "-50% 0px -50% 0px", threshold: 0 }
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
