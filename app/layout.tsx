@@ -18,9 +18,9 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-        {/* Cormorant Garamond (serif) + Lato (sans) + Kalam (script) loaded at runtime */}
+        {/* Cormorant Garamond (serif) + Lato (sans) + Nothing You Could Do (script) loaded at runtime */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Kalam:wght@300;400;700&family=Lato:wght@300;400;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&family=Nothing+You+Could+Do&display=swap"
           rel="stylesheet"
         />
       </head>
