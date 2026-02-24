@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import dynamic from "next/dynamic";
 import timelineData from "@/content/timeline.json";
 import bannerImages from "@/content/banner.json";
@@ -12,16 +12,11 @@ const PasswordModal = dynamic(() => import("@/components/PasswordModal"), {
 });
 
 export default function LandingPage() {
-  const [activeIndex, setActiveIndex] = useState(0);
   const [showModal, setShowModal] = useState(false);
-
-  const handleActivate = useCallback((index: number) => {
-    setActiveIndex(index);
-  }, []);
 
   return (
     <>
-      <HorizontalBanner activeIndex={activeIndex} total={timelineData.length} images={bannerImages} />
+      <HorizontalBanner images={bannerImages} />
 
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-20 flex items-center px-6 py-4">
@@ -64,12 +59,10 @@ export default function LandingPage() {
         </section>
 
         {/* Timeline cards */}
-        {timelineData.map((entry, i) => (
+        {timelineData.map((entry) => (
           <TimelineCard
             key={entry.id}
             entry={entry}
-            index={i}
-            onActivate={handleActivate}
           />
         ))}
 

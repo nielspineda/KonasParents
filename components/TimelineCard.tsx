@@ -12,15 +12,9 @@ interface TimelineEntry {
 
 interface TimelineCardProps {
   entry: TimelineEntry;
-  index: number;
-  onActivate: (index: number) => void;
 }
 
-export default function TimelineCard({
-  entry,
-  index,
-  onActivate,
-}: TimelineCardProps) {
+export default function TimelineCard({ entry }: TimelineCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -29,14 +23,13 @@ export default function TimelineCard({
       ([e]) => {
         if (e.isIntersecting) {
           setVisible(true);
-          onActivate(index);
         }
       },
       { threshold: 0.4 }
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
-  }, [index, onActivate]);
+  }, []);
 
   return (
     <div

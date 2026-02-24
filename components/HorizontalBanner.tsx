@@ -8,16 +8,10 @@ interface BannerImage {
 }
 
 interface HorizontalBannerProps {
-  activeIndex: number;
-  total: number;
   images: BannerImage[];
 }
 
-export default function HorizontalBanner({
-  activeIndex,
-  total,
-  images,
-}: HorizontalBannerProps) {
+export default function HorizontalBanner({ images }: HorizontalBannerProps) {
   const stripRef = useRef<HTMLDivElement>(null);
 
   // Split images into two staggered rows
@@ -31,17 +25,27 @@ export default function HorizontalBanner({
     return { topRow: top, bottomRow: bottom };
   }, [images]);
 
-  // Each image ~35vw wide; columns = larger row count
-  const columns = Math.max(topRow.length, bottomRow.length);
-  const stripWidth = Math.max(180, columns * 35);
-
+  // Scroll-driven: translate based on page scroll progress
   useEffect(() => {
-    if (!stripRef.current) return;
-    const progress = total > 1 ? activeIndex / (total - 1) : 0;
-    const maxOffset = stripWidth - 100;
-    const offset = -progress * maxOffset;
-    stripRef.current.style.transform = `translateX(${offset}%)`;
-  }, [activeIndex, total, stripWidth]);
+    const strip = stripRef.current;
+    if (!strip) return;
+
+    const onScroll = () => {
+      const scrollTop = window.scrollY;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      if (maxScroll <= 0) return;
+      const progress = Math.min(scrollTop / maxScroll, 1);
+      // Translate as percentage of strip's own width, capped so right edge aligns with viewport
+      const stripW = strip.scrollWidth;
+      const viewW = window.innerWidth;
+      const maxTranslate = Math.max(0, stripW - viewW);
+      strip.style.transform = `translateX(${-progress * maxTranslate}px)`;
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const fallbackColors = [
     "#E5DED6", "#ddd0c2", "#d4c4b0", "#cbb89e",
@@ -51,9 +55,9 @@ export default function HorizontalBanner({
   const renderCell = (img: BannerImage, i: number) => (
     <div
       key={i}
-      className="relative"
+      className="relative flex-shrink-0"
       style={{
-        flex: "0 0 35vw",
+        width: "35vw",
         height: "100%",
         background: `linear-gradient(135deg, ${
           fallbackColors[i % fallbackColors.length]
@@ -66,7 +70,7 @@ export default function HorizontalBanner({
         <img
           src={img.src}
           alt={img.alt}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="w-full h-full object-contain"
           loading="lazy"
         />
       )}
@@ -82,8 +86,8 @@ export default function HorizontalBanner({
         ref={stripRef}
         className="absolute top-0 bottom-0"
         style={{
-          width: `${stripWidth}%`,
-          transition: "transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+          display: "inline-block",
+          transition: "transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
         }}
       >
         {/* Top row */}
