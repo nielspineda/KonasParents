@@ -55,7 +55,7 @@ export default function TimelineCard({ entry }: TimelineCardProps) {
         >
           {entry.title}
         </h2>
-        <div className="paper-card px-6 py-5 max-w-sm">
+        <div className="paper-card px-8 py-5 max-w-md">
           <p
             className="text-xl leading-relaxed text-[#6F6760]"
             style={{ fontFamily: "var(--font-serif)", fontWeight: 300, fontStyle: "italic" }}
