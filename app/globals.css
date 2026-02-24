@@ -43,6 +43,14 @@ html {
   border-radius: 2px;
 }
 
+/* Frosted glass backdrop for text readability over photos */
+.frost {
+  background: rgba(244, 239, 232, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 1.5rem;
+}
+
 /* Decorative divider */
 .divider-leaf {
   display: flex;

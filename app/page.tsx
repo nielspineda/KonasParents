@@ -32,30 +32,32 @@ export default function LandingPage() {
       <main>
         {/* Intro spacer */}
         <section className="flex flex-col items-center justify-center min-h-screen text-center px-6">
-          <p
-            className="text-2xl md:text-3xl tracking-[0.15em] uppercase text-[#A8B5A2] mb-6"
-            style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
-          >
-            A Love Story
-          </p>
-          <h1
-            className="text-6xl md:text-8xl leading-tight text-[#3A342F] mb-6"
-            style={{ fontFamily: "var(--font-script)" }}
-          >
-            Bess &amp; Niels
-          </h1>
-          <p
-            className="text-sm text-[#6F6760] tracking-wide"
-            style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
-          >
-            Scroll for our story or jump straight to{" "}
-            <button
-              onClick={() => setShowModal(true)}
-              className="text-[#A8B5A2] hover:text-[#8F9A86] underline underline-offset-2 transition-colors"
+          <div className="frost px-10 py-10">
+            <p
+              className="text-2xl md:text-3xl tracking-[0.15em] uppercase text-[#A8B5A2] mb-6"
+              style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
             >
-              details
-            </button>
-          </p>
+              A Love Story
+            </p>
+            <h1
+              className="text-6xl md:text-8xl leading-tight text-[#3A342F] mb-6"
+              style={{ fontFamily: "var(--font-script)" }}
+            >
+              Bess &amp; Niels
+            </h1>
+            <p
+              className="text-sm text-[#6F6760] tracking-wide"
+              style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
+            >
+              Scroll for our story or jump straight to{" "}
+              <button
+                onClick={() => setShowModal(true)}
+                className="text-[#A8B5A2] hover:text-[#8F9A86] underline underline-offset-2 transition-colors"
+              >
+                details
+              </button>
+            </p>
+          </div>
         </section>
 
         {/* Timeline cards */}
@@ -68,19 +70,21 @@ export default function LandingPage() {
 
         {/* Bottom CTA */}
         <section className="flex flex-col items-center justify-center min-h-[50vh] text-center px-6 pb-32">
-          <p
-            className="text-3xl text-[#6F6760] mb-8"
-            style={{ fontFamily: "var(--font-script)" }}
-          >
-            Ready to celebrate?
-          </p>
-          <button
-            onClick={() => setShowModal(true)}
-            className="bg-[#A8B5A2] hover:bg-[#8F9A86] text-white rounded-full px-8 py-3 text-sm tracking-wide transition-colors"
-            style={{ fontFamily: "var(--font-sans)" }}
-          >
-            View Details →
-          </button>
+          <div className="frost px-10 py-10 flex flex-col items-center">
+            <p
+              className="text-3xl text-[#3A342F] mb-8"
+              style={{ fontFamily: "var(--font-script)" }}
+            >
+              Ready to celebrate?
+            </p>
+            <button
+              onClick={() => setShowModal(true)}
+              className="bg-[#A8B5A2] hover:bg-[#8F9A86] text-white rounded-full px-8 py-3 text-sm tracking-wide transition-colors"
+              style={{ fontFamily: "var(--font-sans)" }}
+            >
+              View Details →
+            </button>
+          </div>
         </section>
       </main>
 
