@@ -121,7 +121,7 @@ export default function DetailsPage() {
       <section className="max-w-6xl mx-auto px-4 py-20">
         <h2
           className="text-4xl text-center mb-3 text-[#3A342F]"
-          style={{ fontFamily: "var(--font-script)" }}
+          style={{ fontFamily: "'Nothing You Could Do', cursive" }}
         >
           The Weekend
         </h2>
@@ -140,32 +140,53 @@ export default function DetailsPage() {
           {/* Itinerary */}
           <div className="w-full md:w-1/2">
             <div className="paper-card px-8 py-10">
-              <ol className="space-y-6">
-                {itineraryData.map((item, i) => (
-                  <li key={i} className="flex gap-6">
-                    <span
-                      className="w-20 shrink-0 text-xs pt-1 tracking-wide text-[#A8B5A2] font-medium text-right"
-                      style={{ fontFamily: "var(--font-sans)" }}
-                    >
-                      {item.time}
-                    </span>
-                    <div className="border-l border-[#E5DED6] pl-6">
-                      <p
-                        className="text-lg text-[#3A342F] mb-0.5"
-                        style={{ fontFamily: "var(--font-script)" }}
-                      >
-                        {item.event}
-                      </p>
-                      <p
-                        className="text-sm text-[#6F6760]"
-                        style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
-                      >
-                        {item.description}
-                      </p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
+              {itineraryData.map((day, di) => (
+                <div key={di} className={di > 0 ? "mt-8 pt-8 border-t border-[#E5DED6]" : ""}>
+                  <h3
+                    className="text-2xl text-[#3A342F] mb-5"
+                    style={{ fontFamily: "'Nothing You Could Do', cursive" }}
+                  >
+                    {day.day}
+                  </h3>
+                  <ol className="space-y-5">
+                    {day.events.map((item, i) => (
+                      <li key={i} className="flex gap-5">
+                        <span
+                          className="w-20 shrink-0 text-xs pt-1 tracking-wide text-[#A8B5A2] font-medium text-right"
+                          style={{ fontFamily: "var(--font-sans)" }}
+                        >
+                          {item.time}
+                        </span>
+                        <div className="border-l border-[#E5DED6] pl-5">
+                          <p
+                            className="text-lg text-[#3A342F] mb-0.5"
+                            style={{ fontFamily: "'Nothing You Could Do', cursive" }}
+                          >
+                            {item.event}
+                            {item.venue && (
+                              <span className="text-sm text-[#A8B5A2] ml-2" style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}>
+                                ({item.venue})
+                              </span>
+                            )}
+                          </p>
+                          <p
+                            className="text-sm text-[#6F6760]"
+                            style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
+                          >
+                            {item.description}
+                          </p>
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              ))}
+              <p
+                className="mt-8 text-xs text-[#6F6760] italic"
+                style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
+              >
+                * The time ranges are set, but we&apos;re still finalizing venues outside of Charter Oak. These will be confirmed in March and April.
+              </p>
             </div>
           </div>
         </div>

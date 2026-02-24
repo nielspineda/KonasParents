@@ -1,32 +1,48 @@
 [
   {
-    "time": "4:00 PM",
-    "event": "Guests Arrive & Be Seated",
-    "description": "Please arrive a few minutes early so we can start on time."
+    "day": "Friday Evening",
+    "events": [
+      {
+        "time": "8:30 PM",
+        "event": "Downtown Napa Drinks",
+        "venue": "Wilfred's Lounge",
+        "description": "Join us for post-dinner tiki drinks to kick off the weekend"
+      }
+    ]
   },
   {
-    "time": "4:30 PM",
-    "event": "Ceremony",
-    "description": "The exchange of vows and rings."
-  },
-  {
-    "time": "5:00 PM",
-    "event": "Cocktail Hour",
-    "description": "Drinks, light bites, and mingling on the lawn."
-  },
-  {
-    "time": "6:00 PM",
-    "event": "Dinner & Toasts",
-    "description": "Sit-down dinner followed by heartfelt speeches."
-  },
-  {
-    "time": "8:00 PM",
-    "event": "Dancing",
-    "description": "First dance, then the floor is yours!"
-  },
-  {
-    "time": "10:30 PM",
-    "event": "Send-Off",
-    "description": "Wave the happy couple goodbye as they begin their honeymoon."
+    "day": "Saturday",
+    "events": [
+      {
+        "time": "12:00 PM",
+        "event": "Bites & Brews",
+        "venue": "Napa Yard",
+        "description": "Enjoy some casual bites and local brews"
+      },
+      {
+        "time": "6:00 PM",
+        "event": "Bubbly Hour",
+        "venue": "Charter Oak",
+        "description": "Starting our Charter Oak evening with some bubbles and photos"
+      },
+      {
+        "time": "6:30 PM",
+        "event": "Paper Signings",
+        "venue": "",
+        "description": "Making some memories as we make things official"
+      },
+      {
+        "time": "7:00 PM",
+        "event": "Dinner",
+        "venue": "",
+        "description": "An intimate evening of food, wine, and celebration!"
+      },
+      {
+        "time": "10:00 PM",
+        "event": "Nightcaps",
+        "venue": "Cade Wine & Beer Bar",
+        "description": "One more round (or maybe a few) to properly cap off the night!"
+      }
+    ]
   }
 ]
