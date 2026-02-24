@@ -123,7 +123,12 @@ export default function GalleryPage() {
                 <img
                   src={img.src}
                   alt={img.alt}
-                  className="w-full object-cover"
+                  className="w-full object-cover opacity-0 transition-opacity duration-700 ease-in"
+                  onLoad={(e) => {
+                    const el = e.currentTarget;
+                    const delay = Math.min(i * 60, 600);
+                    setTimeout(() => { el.style.opacity = "1"; }, delay);
+                  }}
                 />
               </button>
             ))}
