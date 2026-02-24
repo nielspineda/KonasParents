@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback, useMemo } from "react";
 
 interface TimelineEntry {
   id: string;
@@ -15,12 +15,39 @@ interface TimelineCardProps {
   entry: TimelineEntry;
 }
 
+// Split text into sentences, keeping the delimiter attached
+function splitSentences(text: string): string[] {
+  const result: string[] = [];
+  const regex = /[^.!?]*[.!?]+\s*/g;
+  let match;
+  let lastIndex = 0;
+  while ((match = regex.exec(text)) !== null) {
+    result.push(match[0]);
+    lastIndex = regex.lastIndex;
+  }
+  // Grab any trailing text without punctuation
+  if (lastIndex < text.length) {
+    result.push(text.slice(lastIndex));
+  }
+  return result.filter((s) => s.trim().length > 0);
+}
+
+// Reading pause: 2s for short sentences, up to 4s for long ones
+function readingPause(sentence: string): number {
+  const len = sentence.trim().length;
+  // Clamp between 2000ms and 4000ms based on length (30-150 chars)
+  const t = Math.min(1, Math.max(0, (len - 30) / 120));
+  return 2000 + t * 2000;
+}
+
 export default function TimelineCard({ entry }: TimelineCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
-  const [typedCount, setTypedCount] = useState(0);
-  const [doneTyping, setDoneTyping] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(0);
+  const [done, setDone] = useState(false);
   const hasStarted = useRef(false);
+
+  const sentences = useMemo(() => splitSentences(entry.story), [entry.story]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -29,46 +56,33 @@ export default function TimelineCard({ entry }: TimelineCardProps) {
           setVisible(true);
         }
       },
-      // Trigger when element crosses the middle of the viewport
       { rootMargin: "-50% 0px -50% 0px", threshold: 0 }
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
 
-  // Start typewriter once visible, only once
-  const startTyping = useCallback(() => {
+  const startReveal = useCallback(() => {
     if (hasStarted.current) return;
     hasStarted.current = true;
 
-    const text = entry.story;
-    const len = text.length;
     let i = 0;
-    const charSpeed = 55;
-
-    const tick = () => {
+    const reveal = () => {
       i++;
-      setTypedCount(i);
-      if (i < len) {
-        // Pause after sentence-ending punctuation
-        const ch = text[i - 1];
-        const delay = (ch === '!' || ch === '.' || ch === '?') && i < len - 1
-          ? 500
-          : charSpeed;
-        setTimeout(tick, delay);
+      setVisibleCount(i);
+      if (i < sentences.length) {
+        setTimeout(reveal, readingPause(sentences[i - 1]));
       } else {
-        setDoneTyping(true);
+        setDone(true);
       }
     };
-    // Hold on cursor for a moment before typing starts
-    setTimeout(tick, 1000);
-  }, [entry.story]);
+    // Initial pause before first sentence appears
+    setTimeout(reveal, 800);
+  }, [sentences]);
 
   useEffect(() => {
-    if (visible) startTyping();
-  }, [visible, startTyping]);
-
-  const displayedText = doneTyping ? entry.story : entry.story.slice(0, typedCount);
+    if (visible) startReveal();
+  }, [visible, startReveal]);
 
   return (
     <div
@@ -102,18 +116,26 @@ export default function TimelineCard({ entry }: TimelineCardProps) {
         >
           {entry.title}
         </h2>
-        <div
-          className="paper-card px-8 py-5 max-w-md overflow-hidden transition-all duration-300 ease-out"
-          style={{ minHeight: typedCount > 0 || doneTyping ? undefined : "0px" }}
-        >
+        <div className="paper-card px-8 py-5 max-w-md overflow-hidden transition-all duration-500 ease-out">
           <p
             className="text-xl leading-relaxed text-[#6F6760]"
             style={{ fontFamily: "var(--font-serif)", fontWeight: 300, fontStyle: "italic" }}
           >
-            {displayedText}
-            {!doneTyping && typedCount > 0 && (
-              <span className="inline-block w-[2px] h-[1em] bg-[#A8B5A2] ml-[2px] align-baseline animate-pulse" />
-            )}
+            {sentences.map((sentence, i) => (
+              <span
+                key={i}
+                className={`inline transition-all duration-500 ease-out ${
+                  i < visibleCount
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-2"
+                }`}
+                style={{
+                  display: i < visibleCount || done ? "inline" : "none",
+                }}
+              >
+                {sentence}
+              </span>
+            ))}
           </p>
         </div>
       </div>
