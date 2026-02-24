@@ -9,9 +9,6 @@ import faqsData from "@/content/faqs.json";
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-// TODO: Replace with your actual Google Form URL
-const RSVP_URL = "https://forms.google.com/TODO";
-
 // TODO: Replace with actual gallery images
 const galleryImages: { src: string; alt: string }[] = [];
 
@@ -34,49 +31,44 @@ export default function DetailsPage() {
 
   const tabs = [
     {
-      label: "RSVP",
-      content: (
-        <div className="text-center py-10 max-w-lg mx-auto">
-          <p
-            className="text-base leading-relaxed text-[#6F6760] mb-8"
-            style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
-          >
-            Given how tight-knit this wedding is, we&apos;ve likely already spoken
-            to you and confirmed your attendance! But please fill out this RSVP
-            still!
-          </p>
-          <a
-            href={RSVP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-[#A8B5A2] hover:bg-[#8F9A86] text-white rounded-full px-8 py-3 text-sm tracking-wide transition-colors"
-            style={{ fontFamily: "var(--font-sans)" }}
-          >
-            Fill Out RSVP Form →
-          </a>
-        </div>
-      ),
-    },
-    {
       label: "FAQs",
       content: (
         <div className="max-w-2xl mx-auto space-y-8">
           {faqsData.map((faq, i) => (
-            <div key={i} className="border-b border-[#E5DED6] pb-8">
+            <div key={i} className="border-b border-[#E5DED6] pb-8 last:border-b-0">
               <h3
                 className="text-xl mb-2 text-[#3A342F]"
-                style={{ fontFamily: "var(--font-script)", fontWeight: 600 }}
+                style={{ fontFamily: "'Nothing You Could Do', cursive" }}
               >
                 {faq.question}
               </h3>
               <p
-                className="text-sm leading-relaxed text-[#6F6760]"
+                className="text-sm leading-relaxed text-[#6F6760] whitespace-pre-line"
                 style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
               >
                 {faq.answer}
               </p>
             </div>
           ))}
+        </div>
+      ),
+    },
+    {
+      label: "RSVP",
+      content: (
+        <div className="text-center py-10 max-w-lg mx-auto">
+          <h3
+            className="text-2xl text-[#3A342F] mb-6"
+            style={{ fontFamily: "'Nothing You Could Do', cursive" }}
+          >
+            RSVP
+          </h3>
+          <p
+            className="text-base leading-relaxed text-[#6F6760]"
+            style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
+          >
+            Given how tight-knit this wedding will be, no need for an RSVP! However, if you do have any concerns (i.e. dietary restrictions, timing, etc.) or last minute changes, please let us know directly!
+          </p>
         </div>
       ),
     },
