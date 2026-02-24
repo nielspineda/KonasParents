@@ -22,6 +22,8 @@ export default function GalleryPage() {
   const [activeTags, setActiveTags] = useState<Set<Tag>>(new Set(ALL_TAGS));
   const [hasInteracted, setHasInteracted] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [loadProgress, setLoadProgress] = useState(0);
 
   useEffect(() => {
     const access = localStorage.getItem("kp_access");
@@ -31,6 +33,36 @@ export default function GalleryPage() {
       router.replace(`${BASE_PATH}/`);
     }
   }, [router]);
+
+  // Preload first batch of images before revealing gallery
+  useEffect(() => {
+    if (!authorized) return;
+    const validImages = (galleryData as GalleryImage[]).filter((img) => img.src);
+    // Preload first 12 images (visible above fold), then reveal
+    const preloadCount = Math.min(12, validImages.length);
+    if (preloadCount === 0) { setLoading(false); return; }
+
+    let loaded = 0;
+    const onLoad = () => {
+      loaded++;
+      setLoadProgress(Math.round((loaded / preloadCount) * 100));
+      if (loaded >= preloadCount) {
+        // Brief pause for smooth transition
+        setTimeout(() => setLoading(false), 300);
+      }
+    };
+
+    validImages.slice(0, preloadCount).forEach((img) => {
+      const image = new Image();
+      image.onload = onLoad;
+      image.onerror = onLoad;
+      image.src = img.src;
+    });
+
+    // Safety timeout — don't block forever
+    const timeout = setTimeout(() => setLoading(false), 6000);
+    return () => clearTimeout(timeout);
+  }, [authorized]);
 
   const handleTagClick = useCallback(
     (tag: Tag) => {
@@ -67,6 +99,26 @@ export default function GalleryPage() {
 
   return (
     <div className="min-h-screen bg-[#F4EFE8]">
+      {/* Loading screen */}
+      <div
+        className={`fixed inset-0 z-50 bg-[#F4EFE8] flex flex-col items-center justify-center transition-opacity duration-700 ${
+          loading ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+      >
+        <p
+          className="text-3xl md:text-4xl text-[#3A342F] mb-6"
+          style={{ fontFamily: "'Nothing You Could Do', cursive" }}
+        >
+          Gallery
+        </p>
+        <div className="w-48 h-px bg-[#E5DED6] rounded-full overflow-hidden">
+          <div
+            className="h-full bg-[#A8B5A2] transition-all duration-300 ease-out"
+            style={{ width: `${loadProgress}%` }}
+          />
+        </div>
+      </div>
+
       {/* Header */}
       <section className="pt-16 pb-8 text-center px-6">
         <h1
