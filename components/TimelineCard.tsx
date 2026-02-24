@@ -53,7 +53,7 @@ export default function TimelineCard({
           {entry.date}
         </span>
         <h2
-          className={`mb-5 leading-tight ${
+          className={`mb-5 leading-tight whitespace-pre-line ${
             entry.isFuture
               ? "text-5xl md:text-6xl text-[#A8B5A2]"
               : "text-4xl md:text-5xl text-[#3A342F]"
@@ -64,8 +64,8 @@ export default function TimelineCard({
         </h2>
         <div className="paper-card px-6 py-5 max-w-sm">
           <p
-            className="text-base leading-relaxed text-[#6F6760]"
-            style={{ fontFamily: "var(--font-serif)", fontWeight: 300, fontStyle: "italic" }}
+            className="text-lg leading-relaxed text-[#6F6760]"
+            style={{ fontFamily: "var(--font-handwriting)", fontWeight: 500 }}
           >
             {entry.story}
           </p>
