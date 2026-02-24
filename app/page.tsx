@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import dynamic from "next/dynamic";
 import timelineData from "@/content/timeline.json";
+import bannerImages from "@/content/banner.json";
 import TimelineCard from "@/components/TimelineCard";
 import HorizontalBanner from "@/components/HorizontalBanner";
 
@@ -20,7 +21,7 @@ export default function LandingPage() {
 
   return (
     <>
-      <HorizontalBanner activeIndex={activeIndex} total={timelineData.length} />
+      <HorizontalBanner activeIndex={activeIndex} total={timelineData.length} images={bannerImages} />
 
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-20 flex items-center px-6 py-4">
