@@ -3,14 +3,10 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Tabs from "@/components/Tabs";
-import Gallery from "@/components/Gallery";
 import itineraryData from "@/content/itinerary.json";
 import faqsData from "@/content/faqs.json";
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-
-// TODO: Replace with actual gallery images
-const galleryImages: { src: string; alt: string }[] = [];
 
 export default function DetailsPage() {
   const router = useRouter();
@@ -71,10 +67,6 @@ export default function DetailsPage() {
           </p>
         </div>
       ),
-    },
-    {
-      label: "Photos",
-      content: <Gallery images={galleryImages} />,
     },
   ];
 
@@ -185,8 +177,19 @@ export default function DetailsPage() {
       </section>
 
       {/* Tabs */}
-      <section className="max-w-3xl mx-auto px-6 pb-32">
+      <section className="max-w-3xl mx-auto px-6 pb-16">
         <Tabs tabs={tabs} />
+      </section>
+
+      {/* Gallery link */}
+      <section className="text-center pb-32">
+        <button
+          onClick={() => router.push(`${BASE_PATH}/gallery`)}
+          className="inline-block bg-[#A8B5A2] hover:bg-[#8F9A86] text-white rounded-full px-8 py-3 text-sm tracking-wide transition-colors"
+          style={{ fontFamily: "'Nothing You Could Do', cursive", fontSize: "1.1rem" }}
+        >
+          View Photos →
+        </button>
       </section>
     </div>
   );
