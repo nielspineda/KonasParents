@@ -42,19 +42,19 @@ Used in the horizontal banner gradient, transitioning from warm neutrals into sa
 | -------------- | --------------------------------------- | --------------------------------- |
 | `--font-serif` | `"Cormorant Garamond", Georgia, serif`  | Mid-level headings, dates          |
 | `--font-sans`  | `"Lato", system-ui, sans-serif`         | Body text, UI labels, navigation   |
-| `--font-script`| `"Caveat", cursive`                     | Display headings, decorative text  |
+| `--font-script`| `"Great Vibes", cursive`                | Display headings, decorative text  |
 
 **Weights loaded:**
 
-- Cormorant Garamond: 300 (light), 400 (regular), 600 (semi-bold)
+- Cormorant Garamond: 300 (light), 400 (regular), 600 (semi-bold), plus italic variants
 - Lato: 300 (light), 400 (regular), 700 (bold)
-- Caveat: 400 (regular), 500 (medium), 600 (semi-bold), 700 (bold)
+- Great Vibes: 400 (regular)
 
 ### Typographic Style
 
 The style guide establishes two distinct text voices that work together:
 
-1. **Handwritten / Script** — For decorative headers ("wedding weekend", "itinerary", "Save the date!!"). In the codebase this maps to `--font-script` (Caveat) at large sizes. The warm, handwritten quality creates intimacy and personality.
+1. **Handwritten / Script** — For decorative headers ("wedding weekend", "itinerary", "Save the date!!"). In the codebase this maps to `--font-script` (Great Vibes) at large sizes. The elegant calligraphic style creates warmth and romance without feeling casual.
 
 2. **Structured / Clean** — For body text, labels, and UI elements. In the codebase this maps to `--font-sans` (Lato) with generous letter-spacing for a clean, readable feel.
 
@@ -64,8 +64,8 @@ The style guide establishes two distinct text voices that work together:
 
 | Treatment         | Implementation                                                     | Example                 |
 | ----------------- | ------------------------------------------------------------------ | ----------------------- |
-| Page title        | `--font-script`, `text-6xl`–`text-8xl`, bold weight            | "Niels & Bess"          |
-| Section heading   | `--font-script`, `text-4xl`–`text-5xl`, semi-bold              | "The Day"               |
+| Page title        | `--font-script`, `text-6xl`–`text-8xl`                         | "Bess & Niels"          |
+| Section heading   | `--font-script`, `text-4xl`–`text-5xl`                         | "The Day"               |
 | Event category    | `--font-sans`, uppercase, `tracking-[0.2em]`–`tracking-[0.3em]`   | WELCOME, CEREMONY       |
 | Day label         | `--font-sans`, lowercase, `tracking-wide`, `text-sm`               | friday, saturday        |
 | Body text         | `--font-sans`, `text-sm`–`text-base`, regular weight               | "Drinks & Desserts"     |
@@ -193,6 +193,6 @@ The horizontal gradient banner transitions from warm neutrals to sage greens, cr
   --card-border: #E5DED6;
   --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-sans: "Lato", system-ui, sans-serif;
-  --font-script: "Caveat", cursive;
+  --font-script: "Great Vibes", cursive;
 }
 ```

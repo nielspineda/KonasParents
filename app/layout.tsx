@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Niels & Bess — Wedding",
-  description: "Join us to celebrate the wedding of Niels and Bess.",
+  title: "Bess & Niels — Wedding",
+  description: "Join us to celebrate the wedding of Bess and Niels.",
 };
 
 export default function RootLayout({
@@ -18,9 +18,9 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-        {/* Cormorant Garamond (serif) + Lato (sans) + Caveat (script) loaded at runtime */}
+        {/* Cormorant Garamond (serif) + Lato (sans) + Great Vibes (script) loaded at runtime */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;600&family=Lato:wght@300;400;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&family=Lato:wght@300;400;700&display=swap"
           rel="stylesheet"
         />
       </head>

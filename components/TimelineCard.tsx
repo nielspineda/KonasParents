@@ -47,8 +47,8 @@ export default function TimelineCard({
     >
       <div className="flex flex-col items-center text-center max-w-lg mx-auto px-6 py-24">
         <span
-          className="text-xs tracking-[0.2em] uppercase text-[#A8B5A2] mb-4"
-          style={{ fontFamily: "var(--font-sans)" }}
+          className="text-base md:text-lg tracking-[0.2em] uppercase text-[#A8B5A2] mb-4"
+          style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
         >
           {entry.date}
         </span>
@@ -58,14 +58,14 @@ export default function TimelineCard({
               ? "text-5xl md:text-6xl text-[#A8B5A2]"
               : "text-4xl md:text-5xl text-[#3A342F]"
           }`}
-          style={{ fontFamily: "var(--font-script)", fontWeight: 600 }}
+          style={{ fontFamily: "var(--font-script)" }}
         >
           {entry.title}
         </h2>
         <div className="paper-card px-6 py-5 max-w-sm">
           <p
             className="text-base leading-relaxed text-[#6F6760]"
-            style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
+            style={{ fontFamily: "var(--font-serif)", fontWeight: 300, fontStyle: "italic" }}
           >
             {entry.story}
           </p>
