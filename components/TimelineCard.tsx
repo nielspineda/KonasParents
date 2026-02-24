@@ -40,7 +40,7 @@ export default function TimelineCard({ entry }: TimelineCardProps) {
     >
       <div className="flex flex-col items-center text-center max-w-lg mx-auto px-6 py-24">
         <span
-          className="text-base md:text-lg tracking-[0.2em] uppercase text-[#3A342F] mb-4"
+          className="text-base md:text-lg tracking-[0.2em] uppercase text-[#4A6741] mb-4"
           style={{ fontFamily: "var(--font-sans)", fontWeight: 400, textShadow: "0 1px 8px rgba(244, 239, 232, 0.8)" }}
         >
           {entry.date}
@@ -48,7 +48,7 @@ export default function TimelineCard({ entry }: TimelineCardProps) {
         <h2
           className={`mb-5 leading-tight whitespace-pre-line ${
             entry.isFuture
-              ? "text-5xl md:text-6xl text-[#A8B5A2]"
+              ? "text-5xl md:text-6xl text-[#3A342F]"
               : "text-4xl md:text-5xl text-[#3A342F]"
           }`}
           style={{ fontFamily: "var(--font-script)" }}

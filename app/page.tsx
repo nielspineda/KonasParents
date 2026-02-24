@@ -33,7 +33,7 @@ export default function LandingPage() {
         {/* Intro spacer */}
         <section className="flex flex-col items-center justify-center min-h-screen text-center px-6">
           <p
-            className="text-2xl md:text-3xl tracking-[0.15em] uppercase text-[#3A342F] mb-6"
+            className="text-2xl md:text-3xl tracking-[0.15em] uppercase text-[#4A6741] mb-6"
             style={{ fontFamily: "var(--font-sans)", fontWeight: 400, textShadow: "0 1px 8px rgba(244, 239, 232, 0.8)" }}
           >
             A Love Story
