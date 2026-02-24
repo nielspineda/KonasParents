@@ -63,14 +63,13 @@ export default function DetailsPage() {
       </section>
 
       {/* Itinerary */}
-      <section className="max-w-6xl mx-auto px-4 py-8">
+      <section className="max-w-6xl mx-auto px-4 pb-8">
         <h2
-          className="text-4xl text-center mb-3 text-[#3A342F]"
+          className="text-4xl text-center mb-10 text-[#3A342F]"
           style={{ fontFamily: "'Nothing You Could Do', cursive" }}
         >
           The Weekend
         </h2>
-        <p className="divider-leaf mb-12" style={{ fontFamily: "var(--font-sans)" }}>✦</p>
         <div className="flex flex-col md:flex-row gap-8 items-start">
           {/* Photo */}
           <div className="w-full md:w-1/2 flex-shrink-0">
@@ -139,17 +138,17 @@ export default function DetailsPage() {
 
       {/* Tab pills row */}
       <section className="max-w-3xl mx-auto px-6 pt-16 pb-24">
-        <div className="flex justify-center gap-2 mb-10">
+        <div className="flex justify-center gap-3 mb-10">
           {(["FAQs", "RSVP", "Photos"] as const).map((tab) => (
             <button
               key={tab}
               onClick={() => handleTabClick(tab)}
-              className={`px-5 py-2 text-sm tracking-wide rounded-full transition-colors ${
+              className={`px-6 py-2 text-lg tracking-wide rounded-full transition-colors ${
                 activeTab === tab
-                  ? "bg-[#A8B5A2]/15 text-[#A8B5A2] font-medium"
+                  ? "bg-[#A8B5A2]/15 text-[#A8B5A2]"
                   : "text-[#6F6760] hover:text-[#3A342F] hover:bg-[#E5DED6]/40"
               }`}
-              style={{ fontFamily: "var(--font-sans)" }}
+              style={{ fontFamily: "'Nothing You Could Do', cursive", fontWeight: 700 }}
             >
               {tab}
             </button>
