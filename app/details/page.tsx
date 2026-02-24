@@ -143,7 +143,7 @@ export default function DetailsPage() {
             <button
               key={tab}
               onClick={() => handleTabClick(tab)}
-              className={`px-6 py-2 text-lg tracking-wide rounded-full transition-colors ${
+              className={`px-6 py-2 text-2xl tracking-wide rounded-full transition-colors ${
                 activeTab === tab
                   ? "bg-[#A8B5A2]/15 text-[#A8B5A2]"
                   : "text-[#6F6760] hover:text-[#3A342F] hover:bg-[#E5DED6]/40"
@@ -201,7 +201,7 @@ export default function DetailsPage() {
               className="text-base leading-relaxed text-[#6F6760]"
               style={{ fontFamily: "var(--font-sans)", fontWeight: 300 }}
             >
-              Given how tight-knit this wedding will be, no need for an RSVP! However, if you do have any concerns (i.e. dietary restrictions, timing, etc.) or last minute changes, please let us know directly!
+              Since we&apos;ve already connected with everyone personally, <strong className="font-semibold text-[#3A342F]">there&apos;s no formal RSVP</strong>! If you have any concerns (dietary needs, timing changes, etc.) or last minute changes, please let us know directly!
             </p>
           </div>
         )}
