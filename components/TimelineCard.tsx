@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 interface TimelineEntry {
   id: string;
@@ -18,6 +18,9 @@ interface TimelineCardProps {
 export default function TimelineCard({ entry }: TimelineCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  const [typedCount, setTypedCount] = useState(0);
+  const [doneTyping, setDoneTyping] = useState(false);
+  const hasStarted = useRef(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -31,6 +34,34 @@ export default function TimelineCard({ entry }: TimelineCardProps) {
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
+
+  // Start typewriter once visible, only once
+  const startTyping = useCallback(() => {
+    if (hasStarted.current) return;
+    hasStarted.current = true;
+
+    const len = entry.story.length;
+    let i = 0;
+    const speed = Math.max(18, Math.min(35, 2000 / len));
+
+    const tick = () => {
+      i++;
+      setTypedCount(i);
+      if (i < len) {
+        setTimeout(tick, speed);
+      } else {
+        setDoneTyping(true);
+      }
+    };
+    // Small delay after card fades in
+    setTimeout(tick, 400);
+  }, [entry.story]);
+
+  useEffect(() => {
+    if (visible) startTyping();
+  }, [visible, startTyping]);
+
+  const displayedText = doneTyping ? entry.story : entry.story.slice(0, typedCount);
 
   return (
     <div
@@ -64,12 +95,18 @@ export default function TimelineCard({ entry }: TimelineCardProps) {
         >
           {entry.title}
         </h2>
-        <div className="paper-card px-8 py-5 max-w-md">
+        <div
+          className="paper-card px-8 py-5 max-w-md overflow-hidden transition-all duration-300 ease-out"
+          style={{ minHeight: typedCount > 0 || doneTyping ? undefined : "0px" }}
+        >
           <p
             className="text-xl leading-relaxed text-[#6F6760]"
             style={{ fontFamily: "var(--font-serif)", fontWeight: 300, fontStyle: "italic" }}
           >
-            {entry.story}
+            {displayedText}
+            {!doneTyping && typedCount > 0 && (
+              <span className="inline-block w-[2px] h-[1em] bg-[#A8B5A2] ml-[2px] align-baseline animate-pulse" />
+            )}
           </p>
         </div>
       </div>
