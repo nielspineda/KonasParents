@@ -58,7 +58,7 @@ export default function HorizontalBanner({ images }: HorizontalBannerProps) {
       key={i}
       className="relative flex-shrink-0 overflow-hidden"
       style={{
-        width: "45vw",
+        width: "40vw",
         aspectRatio: "3 / 2",
         background: `linear-gradient(135deg, ${
           fallbackColors[i % fallbackColors.length]
@@ -96,7 +96,7 @@ export default function HorizontalBanner({ images }: HorizontalBannerProps) {
           {topRow.map(renderCell)}
         </div>
         {/* Bottom row — offset by half a column for brick pattern */}
-        <div className="flex items-start h-1/2" style={{ marginLeft: "22.5vw" }}>
+        <div className="flex items-start h-1/2" style={{ marginLeft: "20vw" }}>
           {bottomRow.map(renderCell)}
         </div>
       </div>
