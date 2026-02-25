@@ -70,7 +70,7 @@ export default function LandingPage() {
         {/* Envelope CTA */}
         <section className="flex flex-col items-center justify-center min-h-[50vh] text-center px-6 pb-32">
           <p
-            className="text-5xl text-[#3A342F] mb-10"
+            className="text-3xl text-[#3A342F] mb-10"
             style={{ fontFamily: "var(--font-script)" }}
           >
             Ready to celebrate?
@@ -99,7 +99,7 @@ export default function LandingPage() {
             {/* Card peeking out */}
             <div className="absolute left-5 right-5 top-4 h-16 bg-white border border-[#E5DED6] rounded-sm transition-transform duration-500 ease-in-out group-hover:-translate-y-6 flex items-center justify-center">
               <span
-                className="text-base text-[#A8B5A2] tracking-wider"
+                className="text-lg text-[#A8B5A2] tracking-wider"
                 style={{ fontFamily: "'Nothing You Could Do', cursive" }}
               >
                 View Details
