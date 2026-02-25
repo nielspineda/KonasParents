@@ -44,7 +44,7 @@ export default function TimelineCard({ entry }: TimelineCardProps) {
     const text = entry.story;
     const len = text.length;
     let i = 0;
-    const charSpeed = 55;
+    const charSpeed = 40;
 
     const tick = () => {
       i++;
