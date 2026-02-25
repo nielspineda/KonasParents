@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback, useMemo } from "react";
 
 interface TimelineEntry {
   id: string;
@@ -15,12 +15,34 @@ interface TimelineCardProps {
   entry: TimelineEntry;
 }
 
+function splitSentences(text: string): string[] {
+  const result: string[] = [];
+  const regex = /[^.!?]*[.!?]+\s*/g;
+  let match;
+  let lastIndex = 0;
+  while ((match = regex.exec(text)) !== null) {
+    result.push(match[0]);
+    lastIndex = regex.lastIndex;
+  }
+  if (lastIndex < text.length) {
+    result.push(text.slice(lastIndex));
+  }
+  return result.filter((s) => s.trim().length > 0);
+}
+
+function readingPause(sentence: string): number {
+  const len = sentence.trim().length;
+  const t = Math.min(1, Math.max(0, (len - 30) / 120));
+  return 2000 + t * 2000;
+}
+
 export default function TimelineCard({ entry }: TimelineCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
-  const [typedCount, setTypedCount] = useState(0);
-  const [doneTyping, setDoneTyping] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(0);
   const hasStarted = useRef(false);
+
+  const sentences = useMemo(() => splitSentences(entry.story), [entry.story]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -29,46 +51,30 @@ export default function TimelineCard({ entry }: TimelineCardProps) {
           setVisible(true);
         }
       },
-      // Trigger when element crosses the middle of the viewport
       { rootMargin: "-50% 0px -50% 0px", threshold: 0 }
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
 
-  // Start typewriter once visible, only once
-  const startTyping = useCallback(() => {
+  const startReveal = useCallback(() => {
     if (hasStarted.current) return;
     hasStarted.current = true;
 
-    const text = entry.story;
-    const len = text.length;
     let i = 0;
-    const charSpeed = 40;
-
-    const tick = () => {
+    const reveal = () => {
       i++;
-      setTypedCount(i);
-      if (i < len) {
-        // Pause after sentence-ending punctuation
-        const ch = text[i - 1];
-        const delay = (ch === '!' || ch === '.' || ch === '?') && i < len - 1
-          ? 500
-          : charSpeed;
-        setTimeout(tick, delay);
-      } else {
-        setDoneTyping(true);
+      setVisibleCount(i);
+      if (i < sentences.length) {
+        setTimeout(reveal, readingPause(sentences[i - 1]));
       }
     };
-    // Hold on cursor for a moment before typing starts
-    setTimeout(tick, 1000);
-  }, [entry.story]);
+    setTimeout(reveal, 1000);
+  }, [sentences]);
 
   useEffect(() => {
-    if (visible) startTyping();
-  }, [visible, startTyping]);
-
-  const displayedText = doneTyping ? entry.story : entry.story.slice(0, typedCount);
+    if (visible) startReveal();
+  }, [visible, startReveal]);
 
   return (
     <div
@@ -102,18 +108,20 @@ export default function TimelineCard({ entry }: TimelineCardProps) {
         >
           {entry.title}
         </h2>
-        <div
-          className="paper-card px-8 py-5 max-w-md overflow-hidden transition-all duration-300 ease-out"
-          style={{ minHeight: typedCount > 0 || doneTyping ? undefined : "0px" }}
-        >
+        <div className="paper-card px-8 py-5 max-w-md">
           <p
             className="text-xl leading-relaxed text-[#6F6760]"
             style={{ fontFamily: "var(--font-serif)", fontWeight: 300, fontStyle: "italic" }}
           >
-            {displayedText}
-            {!doneTyping && typedCount > 0 && (
-              <span className="inline-block w-[2px] h-[1em] bg-[#A8B5A2] ml-[2px] align-baseline animate-pulse" />
-            )}
+            {sentences.map((sentence, i) => (
+              <span
+                key={i}
+                className="transition-opacity duration-1000 ease-in"
+                style={{ opacity: i < visibleCount ? 1 : 0 }}
+              >
+                {sentence}
+              </span>
+            ))}
           </p>
         </div>
       </div>
