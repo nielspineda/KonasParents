@@ -70,21 +70,21 @@ export default function LandingPage() {
         {/* Envelope CTA */}
         <section className="flex flex-col items-center justify-center min-h-[50vh] text-center px-6 pb-32">
           <p
-            className="text-3xl text-[#3A342F] mb-10"
+            className="text-5xl text-[#3A342F] mb-10"
             style={{ fontFamily: "var(--font-script)" }}
           >
             Ready to celebrate?
           </p>
           <button
             onClick={() => setShowModal(true)}
-            className="group relative w-32 h-24 focus:outline-none"
+            className="group relative w-64 h-48 focus:outline-none"
             aria-label="Open envelope to view details"
           >
             {/* Envelope body */}
             <div className="absolute inset-0 bg-[#F4EFE8] border-2 border-[#A8B5A2] rounded-md shadow-md group-hover:shadow-lg transition-shadow" />
             {/* Envelope flap */}
             <div
-              className="absolute top-0 left-0 right-0 h-12 origin-top transition-transform duration-500 ease-in-out group-hover:[transform:rotateX(180deg)]"
+              className="absolute top-0 left-0 right-0 h-24 origin-top transition-transform duration-500 ease-in-out group-hover:[transform:rotateX(180deg)]"
               style={{ transformStyle: "preserve-3d" }}
             >
               <svg viewBox="0 0 128 48" className="w-full h-full" preserveAspectRatio="none">
@@ -97,9 +97,9 @@ export default function LandingPage() {
               </svg>
             </div>
             {/* Card peeking out */}
-            <div className="absolute left-3 right-3 top-2 h-10 bg-white border border-[#E5DED6] rounded-sm transition-transform duration-500 ease-in-out group-hover:-translate-y-4 flex items-center justify-center">
+            <div className="absolute left-5 right-5 top-4 h-16 bg-white border border-[#E5DED6] rounded-sm transition-transform duration-500 ease-in-out group-hover:-translate-y-6 flex items-center justify-center">
               <span
-                className="text-xs text-[#A8B5A2] tracking-wider"
+                className="text-base text-[#A8B5A2] tracking-wider"
                 style={{ fontFamily: "'Nothing You Could Do', cursive" }}
               >
                 View Details
