@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback, useMemo } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface TimelineEntry {
   id: string;
@@ -15,34 +15,9 @@ interface TimelineCardProps {
   entry: TimelineEntry;
 }
 
-function splitSentences(text: string): string[] {
-  const result: string[] = [];
-  const regex = /[^.!?]*[.!?]+\s*/g;
-  let match;
-  let lastIndex = 0;
-  while ((match = regex.exec(text)) !== null) {
-    result.push(match[0]);
-    lastIndex = regex.lastIndex;
-  }
-  if (lastIndex < text.length) {
-    result.push(text.slice(lastIndex));
-  }
-  return result.filter((s) => s.trim().length > 0);
-}
-
-function readingPause(sentence: string): number {
-  const len = sentence.trim().length;
-  const t = Math.min(1, Math.max(0, (len - 30) / 120));
-  return 2000 + t * 2000;
-}
-
 export default function TimelineCard({ entry }: TimelineCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(0);
-  const hasStarted = useRef(false);
-
-  const sentences = useMemo(() => splitSentences(entry.story), [entry.story]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -56,25 +31,6 @@ export default function TimelineCard({ entry }: TimelineCardProps) {
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
-
-  const startReveal = useCallback(() => {
-    if (hasStarted.current) return;
-    hasStarted.current = true;
-
-    let i = 0;
-    const reveal = () => {
-      i++;
-      setVisibleCount(i);
-      if (i < sentences.length) {
-        setTimeout(reveal, readingPause(sentences[i - 1]));
-      }
-    };
-    setTimeout(reveal, 1000);
-  }, [sentences]);
-
-  useEffect(() => {
-    if (visible) startReveal();
-  }, [visible, startReveal]);
 
   return (
     <div
@@ -110,18 +66,16 @@ export default function TimelineCard({ entry }: TimelineCardProps) {
         </h2>
         <div className="paper-card px-8 py-5 max-w-md">
           <p
-            className="text-xl leading-relaxed text-[#6F6760]"
-            style={{ fontFamily: "var(--font-serif)", fontWeight: 300, fontStyle: "italic" }}
+            className="text-xl leading-relaxed text-[#6F6760] transition-opacity duration-[2000ms] ease-in"
+            style={{
+              fontFamily: "var(--font-serif)",
+              fontWeight: 300,
+              fontStyle: "italic",
+              opacity: visible ? 1 : 0,
+              transitionDelay: visible ? "600ms" : "0ms",
+            }}
           >
-            {sentences.map((sentence, i) => (
-              <span
-                key={i}
-                className="transition-opacity duration-1000 ease-in"
-                style={{ opacity: i < visibleCount ? 1 : 0 }}
-              >
-                {sentence}
-              </span>
-            ))}
+            {entry.story}
           </p>
         </div>
       </div>
