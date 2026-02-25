@@ -82,7 +82,7 @@ export default function LandingPage() {
           >
             {/* Envelope body */}
             <div className="absolute inset-0 bg-[#F4EFE8] border-2 border-[#A8B5A2] rounded-md shadow-md group-hover:shadow-lg transition-shadow" />
-            {/* Envelope flap */}
+            {/* Envelope flap with favicon */}
             <div
               className="absolute top-0 left-0 right-0 h-24 origin-top transition-transform duration-500 ease-in-out group-hover:[transform:rotateX(180deg)]"
               style={{ transformStyle: "preserve-3d" }}
@@ -95,9 +95,16 @@ export default function LandingPage() {
                   strokeWidth="2"
                 />
               </svg>
+              {/* Favicon centered on flap */}
+              <img
+                src="/favicon-32x32.png"
+                alt=""
+                className="absolute left-1/2 top-[30%] -translate-x-1/2 w-8 h-8 opacity-50"
+                aria-hidden="true"
+              />
             </div>
-            {/* Card peeking out */}
-            <div className="absolute left-5 right-5 top-4 h-16 bg-white border border-[#E5DED6] rounded-sm transition-transform duration-500 ease-in-out group-hover:-translate-y-6 flex items-center justify-center">
+            {/* Card peeking out — centered vertically */}
+            <div className="absolute left-5 right-5 top-1/2 -translate-y-1/2 h-16 bg-white border border-[#E5DED6] rounded-sm transition-transform duration-500 ease-in-out group-hover:-translate-y-[calc(50%+1.5rem)] flex items-center justify-center">
               <span
                 className="text-lg text-[#A8B5A2] tracking-wider"
                 style={{ fontFamily: "'Nothing You Could Do', cursive" }}
