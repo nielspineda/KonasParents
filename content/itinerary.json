@@ -14,10 +14,16 @@
     "day": "Saturday",
     "events": [
       {
-        "time": "12:00 PM",
+        "time": "11:30 AM",
         "event": "Bites & Brews",
         "venue": "Napa Yard",
         "description": "Enjoy some casual bites and local brews"
+      },
+      {
+        "time": "5:00 PM",
+        "event": "Bus Pickup (Archer Hotel)",
+        "venue": "",
+        "description": "There will be an optional bus pickup from Archer Hotel to Charter Oak. Don't be late!"
       },
       {
         "time": "5:30 PM",
